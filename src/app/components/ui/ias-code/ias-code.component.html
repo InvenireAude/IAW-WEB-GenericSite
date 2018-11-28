@@ -1,0 +1,17 @@
+<div class="app-hide">
+  <ng-content></ng-content>
+</div>
+EEEEEEEEE?
+
+<div class="well well-sm">
+    <table class="code-wrapper app-fixed-table">
+              <tr>
+                <th>Line</th>
+                <th>Code</th>
+              </tr>
+              <tr *ngFor="let l of program.lines; let i = index">
+                <td class="rownum">{{ i }} </td>
+                <td class="source"><code [innerHtml]="l" appRouteTransformer></code></td>
+              </tr>
+            </tbody>
+<span class="app-hide">ee</span>ee

@@ -1,0 +1,33 @@
+<nav class="navbar navbar-dark bg-black">
+  <a class="navbar-brand" [routerLink]="['/']" *ngIf="homeHtml">
+    <span [innerHtml]="homeHtml"></span>
+  </a>
+  <div class="navbar-expand mr-auto" *ngIf="menu">
+    <div class="navbar-nav">
+
+      <ul class="nav navbar-nav float-xs-right" *ngIf="menu.items">
+        <li ngbDropdown class="nav-item dropdown" *ngFor="let i of menu.items">
+          <a ngbDropdownToggle class="nav-link dropdown-toggle" [routerLink]="[]" id="navbarDropdownMenuLink"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #e3f2fd;">
+            {{ i.title }}
+          </a>
+          <div ngbDropdownMenu class="dropdown-menu show dropdown-black" aria-labelledby="navbarDropdownMenuLink">
+            <div *ngFor="let s of i.subitems">
+                <a class="dropdown-item dropdown-black" *ngIf="s.routerLink" [routerLink]="s.routerLink">{{ s.title }}</a>
+             </div>
+
+          </div>
+        </li>
+      </ul>
+
+      <a class="nav-item nav-link" [routerLink]="menu.news.routerLink" *ngIf="menu.news" style="color: #e3f2fd;"> {{ menu.news.title}}</a>
+      <a class="nav-item nav-link" [routerLink]="menu.blog.routerLink" *ngIf="menu.blog" style="color: #e3f2fd;"> {{ menu.blog.title}}</a>
+
+      <a class="nav-item nav-link" [routerLink]="menu.about.routerLink" *ngIf="menu.about" style="color: #e3f2fd;"> {{ menu.about.title}}</a>
+      <a class="nav-item nav-link" [routerLink]="menu.contact.routerLink" *ngIf="menu.contact" style="color: #e3f2fd;"> {{ menu.contact.title}}</a>
+
+        <!--TODO something wrong with foreground colors style="color: #e3f2fd;">-->
+    </div>
+  </div>
+
+</nav>

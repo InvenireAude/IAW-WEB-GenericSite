@@ -1,0 +1,53 @@
+<div class="animated fadeIn"  style="background-image: url(/content/img/style/bg1.jpg)">
+  <div class="app-bg-image font-white" style="background-color: rgba(0, 171, 219, 0.3);">
+
+
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-8">
+            <h1>Books</h1>
+        </div>
+        <div class="col-md-4">
+            <h4></h4><label>Search:</label>
+            <input type="text" name="type" (change)="applyFilters()" [(ngModel)]="filter.searchString" placeholder="Filter text">
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container animated fadeIn">
+
+  <div class="row">
+    <div class="col-md-4" *ngFor="let b of filteredItems | slice:(page-1)*itemsPerPage:page*itemsPerPage">
+      <div class="card border app-margin-bottom app-card ">
+        <div class="card-header app-header text-center app-grey">
+          <a [routerLink]="['/book', { id: b.id} ]" class="app-grey">
+            <span clas="text-center">
+            <i class="fa fa-book fa-5x"></i>
+            <h4>{{ b.title }}</h4>
+          </span>
+          </a></div>
+        <div class="card-body">
+          <p class="card-text">{{ b.info }}
+            <a [routerLink]="['/book', { id: b.id} ]" class="pull-right"> </a>
+          </p>
+        </div>
+        <div class="card-footer bg-transparent"><small>Published on: {{ b.date }}</small></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <ngb-pagination [pageSize]="itemsPerPage" [collectionSize]="length" [maxSize]="15" [rotate]="true" [(page)]="page"
+        [directionLinks]="true" [boundaryLinks]="true"></ngb-pagination>
+    </div>
+  <div class="col-md-4"></div>
+</div>
+
+</div>

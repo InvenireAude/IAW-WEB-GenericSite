@@ -1,0 +1,23 @@
+<nav>
+  <div>
+
+    <h5 class="app-book-toc">{{ meta.title }}</h5>
+    <p></p>
+    <b>Table of Contents</b>
+
+    <ul *ngFor="let c of meta.chapters" class="nav navbar-nav">
+      <li class="app-book-toc-chapter">
+        <a [routerLink]="['/book', { id: meta.id, sid: c.sections[0].id} ]"> {{ c.title }} </a>
+        <a (click)="close(c)"><span class="fa fa-angle-double-up" *ngIf="c.open" ></span></a>
+        <a (click)="open(c)"> <span class="fa fa-angle-double-down"  *ngIf="!c.open" ></span></a>
+      </li>
+      <div *ngIf="c.open">
+        <ul *ngFor="let s of c.sections" class="nav navbar-nav">
+          <li class="app-book-toc-section" [ngClass]="{ 'app-book-toc-selected' : s.selected }">
+            <a [routerLink]="['/book', { id: meta.id, sid: s.id} ]"> {{ s.title }} </a>
+          </li>
+        </ul>
+      </div>
+    </ul>
+  </div>
+</nav>

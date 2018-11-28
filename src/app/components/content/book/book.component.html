@@ -1,0 +1,32 @@
+<div class="container app-container animated fadeIn">
+  <div class="row">
+
+    <div class="col-md-3">
+      <app-book-toc [meta]=meta></app-book-toc>
+    </div>
+
+    <div class="col-md-9 border-left">
+      <div *ngIf="!content">waiting ...</div>
+      <h3>{{ selectedChapter.title }}</h3>
+      <h4>{{ selectedSection.title }}</h4>
+      <div class="app-book-content" [innerHtml]="content" appRouteTransformer></div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2">
+            <span *ngIf="prevSid">
+              <a class="btn btn-light btn-sm" [routerLink]="['/book', { id: meta.id, sid: prevSid } ]">Prev</a>
+            </span>
+          </div>
+          <div class="col-md-8"></div>
+          <div class="col-md-2">
+            <span *ngIf="nextSid">
+              <a class="btn btn-light btn-sm" [routerLink]="['/book', { id: meta.id, sid: nextSid } ]">Next</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
